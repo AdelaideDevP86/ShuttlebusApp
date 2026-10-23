@@ -1,0 +1,10 @@
+# Automatisch aangemaakte Python-bestanden
+__pycache__/
+*.py[cod]
+
+# Lokale Python-omgeving
+.venv/
+venv/
+
+# Persoonlijke database-instellingen
+shuttlebus/dao/config.py
