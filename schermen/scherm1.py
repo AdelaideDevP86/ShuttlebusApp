@@ -1,4 +1,6 @@
 from PyQt6.QtWidgets import QLineEdit, QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QGroupBox
+from klassen.nieuwsbericht import Nieuwsbericht
+from datetime import date
 
 # Scherm1 erft de mogelijkheden van QWidget.
 class Scherm1(QWidget):
@@ -14,6 +16,11 @@ class Scherm1(QWidget):
 
         # Met self kunnen andere methodes dit tekstonderdeel bereiken.
         self.nieuwstekst = QLabel("Hier komt het nieuws van de shuttlebus te staan.")
+
+        # Een bericht object
+        bericht = Nieuwsbericht( "Nieuwe attractie",
+            "Vanaf april opent de Sky Swing.",
+            "24-10-2026")
 
         self.nieuwsinvoer = QLineEdit()
         layout.addWidget(self.nieuwsinvoer)
@@ -32,10 +39,12 @@ class Scherm1(QWidget):
         # De nieuwskaart krijgt een eigen indeling met het nieuwslabel.
         nieuws_kaart = QGroupBox("Laatste nieuws")
         kaart_layout = QVBoxLayout()
+        kaart_layout.addWidget(QLabel(bericht.titel))
+        kaart_layout.addWidget(QLabel(bericht.inhoud))
+        kaart_layout.addWidget(QLabel(bericht.datum))
+
         kaart_layout.addWidget(self.nieuwstekst)
         nieuws_kaart.setLayout(kaart_layout)
-      
-
         
         # De Parkinformariekaart 
         parkinfo_kaart = QGroupBox("Parkinformatie")
